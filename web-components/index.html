@@ -17,6 +17,7 @@
   <user-card name="舒十七"></user-card>
   <user-card name="叶莲"></user-card>
 </div>
+<!-- 模板 -->
 <template id="userCardTemplate">
   <style>
     :host {
@@ -85,6 +86,7 @@
 </body>
 <script>
 
+// 定义类
   class UserCard extends HTMLElement {
     constructor() {
       super();
@@ -108,6 +110,7 @@
       })
     }
   }
+  // 自定义元素
   window.customElements.define('user-card', UserCard);
 </script>
 
