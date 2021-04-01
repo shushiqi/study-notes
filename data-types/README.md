@@ -66,3 +66,4 @@ function deepCopy(obj) {
 
 - 内存泄漏
     - 全局变量、定时器、闭包等
+    - 
