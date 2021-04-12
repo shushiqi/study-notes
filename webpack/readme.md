@@ -40,3 +40,88 @@
         - **output** 输出结果，转换成功后获得的代码
     - webpack事件流
      > webpack启动后从`entry`里获取配置的`module`解析相关依赖，根据`loader`匹配对应的模块进行转换，一个`entry`和其相关的依赖`module`会被分到同一个组打包成`chunk`，最后转换成文件输出到`output`。在整个过程中，webpack在恰当的实际执行`plugin`里的逻辑
+5. webpack常用配置项实践
+   - entry 
+    ```js
+     <!-- webpack.config.js -->
+    const path = require("path")
+    module.exports = {
+        entry: "./main.js"
+        ... // 省略其他配置
+
+        ]
+    }
+    ```
+   - output
+    ```js
+    const path = require("path")
+    module.exports = {
+    ... // 省略其他配置
+     output: {
+        filename: "[name].[hash:8].js",
+        path: path.resolve(__dirname, "./dist")
+        },
+    }
+    ```
+   - css文件处理
+     ```js
+    const path = require("path")
+    const MiniCssExtractPlugin = require('mini-css-extract-plugin'); //Plugin插件：将css文件提取到单独文件中
+    module.exports = {
+        ... // 省略其他配置
+         module: {
+        rules: [{
+                test: /\.css$/, //匹配css文件类型
+                // use: ['style-loader', 'css-loader?minimize'], //？传入参数方式 mizimize参数，开启css压缩
+                // 或使用对象方式传入参数
+                // use: ['style-loader', {
+                //     loader: 'css-loader',
+                //     options: {
+                //         minimize: true
+                //     }
+                // }]
+                use: [MiniCssExtractPlugin.loader, 'css-loader']
+            }
+        ]
+    },
+        ]
+    }
+    ```
+   - resolve 解析，配置模块如何被解析
+        -  alias，设置引入路径别名
+         ```js
+        const path = require("path")
+        module.exports = {
+            ... // 省略其他配置
+           resolve:{
+               alias: {
+                components: "./src/components/"
+            }
+           }
+        }
+        ``` 
+    - plugin 插件
+       - html-webpack-plugin 自动引入生成的js及css文件
+         ```js
+        const path = require("path")
+        const HtmlWebpackPlugin = require('html-webpack-plugin')
+        module.exports = {
+            ... // 省略其他配置
+            plugins:[
+               new HtmlWebpackPlugin({
+                template: path.resolve(__dirname, "./src/index.html"),
+                }),
+            ]
+        }
+        ```
+      - clean-webpack-plugin  清除上次打包时残留的文件
+        ```js
+        const path = require("path")
+        const { CleanWebpackPlugin } = require('clean-webpack-plugin')        
+        module.exports = {
+            ... // 省略其他配置
+            plugins:[
+               new CleanWebpackPlugin()
+            ]
+        }
+        ```
