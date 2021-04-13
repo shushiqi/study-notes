@@ -101,7 +101,7 @@
         }
         ``` 
     - plugin 插件
-       - html-webpack-plugin 自动引入生成的js及css文件
+        - html-webpack-plugin 自动引入生成的js及css文件
          ```js
         const path = require("path")
         const HtmlWebpackPlugin = require('html-webpack-plugin')
