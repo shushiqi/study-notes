@@ -1,0 +1,2 @@
+## cookie和session
+cookie和session都是用来跟踪浏览器用户身份的会话方式。
