@@ -38,7 +38,7 @@ obj.foo()
         console.log(this.a)
     }
     function doFoo (fn) {
-        console.log(this)
+       // console.log(this)
         fn()
     }
     var obj = { a: 1, foo }
@@ -57,19 +57,17 @@ obj.foo()
     }
     var obj = { a: 1 }
     var a = 2
-
     foo() // 2
     foo.call(obj) 1
     foo.apply(obj) 1
     foo.bind(obj) //未执行，没有打印
     ```
 4. new绑定
-   - 使用new来调用一个函数，会构造一个新对象并把这个新对象绑定到调用函数中的this。
+   - 使用new来调用一个函数，构造一个新对象并把这个新对象绑定到调用函数中的this。
 5. 箭头函数绑定
    实际箭头函数不会对this进行绑定。
     >箭头函数中没有 this 绑定，必须通过查找作用域链来决定其值，如果箭头函数被非箭头函数包含，则 this 绑定的是最近一层非箭头函数的 this，否则，this 为 undefined。
 6. 绑定优先级：new绑定 > 显式绑定 > 隐式绑定 > 默认绑定
-
 7. 测试
     1. 字面量对象中的各种场景
     ```js

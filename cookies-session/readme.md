@@ -14,4 +14,4 @@ cookie和session都是用来跟踪浏览器用户身份的会话方式。
         - `cookie`：大小受限；可禁用`cookie`；安全性较低；某些状态不可保存在客户端；每次访问都需要发送`cookie`，浪费带宽；`cookie`数据有路径（path）的概念，可以限制`cookie`只属于某个路径下。
         - `session`：占用服务器内存，服务器的内存压力较大；依赖于`cookie`（`sessionID`保存在`cookie`）；创建`Session`变量有很大的随意性，可随时调用，不需要开发者做精确地处理，所以，过度使用`session`变量将会导致代码不可读而且不好维护；
   
-## web storage与local storage
+## web storage与local storage的区别
